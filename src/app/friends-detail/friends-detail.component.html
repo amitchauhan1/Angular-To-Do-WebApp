@@ -1,0 +1,45 @@
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td,
+    th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 18px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+
+    .hov:hover,
+    i:hover {
+        background-color: rgb(238, 144, 180);
+    }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<h2 style="text-align: center">Friend Detail</h2>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Contact</th>
+        <th>Country</th>
+        <th style="text-align: center">Action</th>
+    </tr>
+    <tr class="hov" *ngFor="let item of detail ; trackBy:trackByCode">
+        <td style="cursor: pointer;" (click)="sendData(item)"> {{item.name}}</td>
+        <td> {{item.Contact}}</td>
+        <td> {{item.Country}}</td>
+        <td style="text-align: center"><i class="fa fa-window-close" aria-hidden="true" (click)="deleteData(item)" style="font-size:30px;color:red;cursor: pointer;"></i></td>
+    </tr>
+    <tr *ngIf="!detail || detail.length==0">
+        <td style="text-align: center" colspan="4">Data Not Found</td>
+    </tr>
+</table>
+<button (click)="refresh()">Refresh</button>
